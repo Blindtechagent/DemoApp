@@ -1,13 +1,13 @@
 {
-  "name": "demoapp",
+  "name": "quick-notepad",
   "version": "1.0.0",
-  "description": "An accessible Android app built with HTML, CSS, JavaScript and Capacitor.",
+  "description": "Quick Notepad Android app built with HTML, CSS, JavaScript and Capacitor.",
   "repository": {
     "type": "git",
-    "url": "git@github-blindtechagent:Blindtechagent/DemoApp.git"
+    "url": "git@github-blindtechagent:Blindtechagent/quick-notepad.git"
   },
   "license": "ISC",
-  "author": "pawan",
+  "author": "Pawan Kumar",
   "type": "module",
   "main": "index.js",
   "scripts": {

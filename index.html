@@ -1,66 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First App</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Quick Notepad</title>
+
+    <meta
+        name="description"
+        content="A simple offline note taking application.">
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
 </head>
+
 <body>
-<header class="app-header">
-    <button id="menuButton" aria-label="Open menu">
-        ☰
-    </button>
 
-    <h1>DemoApp</h1>
-</header>
+    <!-- ========================= -->
+    <!-- HEADER -->
+    <!-- ========================= -->
 
-<main id="appContent">
+    <header id="appHeader">
 
-    <section id="homeScreen" class="screen">
+        <h1>Quick Notepad</h1>
 
-        <h2>Home</h2>
+    </header>
 
-        <p>Welcome to DemoApp.</p>
+    <!-- ========================= -->
+    <!-- MAIN -->
+    <!-- ========================= -->
 
-    </section>
+    <main id="app">
 
-    <section id="settingsScreen" class="screen hidden">
+        <!-- ========================= -->
+        <!-- HOME -->
+        <!-- ========================= -->
 
-        <h2>Settings</h2>
+        <section
+            id="homeScreen"
+            class="screen"
+            aria-labelledby="homeHeading">
 
-        <p>Settings screen coming soon.</p>
+            <h2 id="homeHeading">
 
-    </section>
+                Notes
 
-    <section id="aboutScreen" class="screen hidden">
+            </h2>
 
-        <h2>About</h2>
+            <div
+                id="notesList"
+                role="list">
 
-        <p>This app is built using HTML, CSS, JavaScript and Capacitor.</p>
+                <p id="emptyMessage">
 
-    </section>
+                    No notes available.
 
-</main>
-<nav class="bottom-nav" aria-label="Main Navigation">
+                    <br><br>
 
-    <button id="homeButton">
-        Home
-    </button>
+                    Select <strong>New Note</strong> to create your first note.
 
-    <button id="settingsButton">
-        Settings
-    </button>
+                </p>
 
-    <button id="aboutButton">
-        About
-    </button>
+            </div>
 
-</nav>
+        </section>
 
-<script src="js/storage.js"></script>
-<script src="js/router.js"></script>
-<script src="js/app.js"></script>
+        <!-- ========================= -->
+        <!-- EDITOR -->
+        <!-- ========================= -->
+
+        <section
+            id="editorScreen"
+            class="screen hidden"
+            aria-labelledby="editorHeading">
+
+            <h2 id="editorHeading">
+
+                New Note
+
+            </h2>
+
+            <form id="noteForm">
+
+                <label for="noteTitle">
+
+                    Title
+
+                </label>
+
+                <input
+                    id="noteTitle"
+                    type="text"
+                    maxlength="100"
+                    autocomplete="off"
+                    placeholder="Enter title">
+
+                <label for="noteContent">
+
+                    Note
+
+                </label>
+
+                <textarea
+                    id="noteContent"
+                    rows="12"
+                    placeholder="Write your note here..."></textarea>
+
+                <button
+                    id="saveNoteButton"
+                    type="submit">
+
+                    Save Note
+
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- ========================= -->
+        <!-- SETTINGS -->
+        <!-- ========================= -->
+
+        <section
+            id="settingsScreen"
+            class="screen hidden"
+            aria-labelledby="settingsHeading">
+
+            <h2 id="settingsHeading">
+
+                Settings
+
+            </h2>
+
+            <p>
+
+                Settings will be available in a future version.
+
+            </p>
+
+        </section>
+
+        <!-- ========================= -->
+        <!-- ABOUT -->
+        <!-- ========================= -->
+
+        <section
+            id="aboutScreen"
+            class="screen hidden"
+            aria-labelledby="aboutHeading">
+
+            <h2 id="aboutHeading">
+
+                About
+
+            </h2>
+
+            <p>
+
+                <strong>Quick Notepad</strong>
+
+            </p>
+
+            <p>
+
+                Version 1.0
+
+            </p>
+
+            <p>
+
+                Offline note taking application built using HTML, CSS, JavaScript and Capacitor.
+
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- ========================= -->
+    <!-- BOTTOM NAVIGATION -->
+    <!-- ========================= -->
+
+    <nav
+        id="bottomNavigation"
+        aria-label="Main Navigation">
+
+        <button
+            id="homeButton"
+            type="button"
+            aria-current="page">
+
+            Home
+
+        </button>
+
+        <button
+            id="newButton"
+            type="button"
+            aria-current="false">
+
+            New Note
+
+        </button>
+
+        <button
+            id="settingsButton"
+            type="button"
+            aria-current="false">
+
+            Settings
+
+        </button>
+
+        <button
+            id="aboutButton"
+            type="button"
+            aria-current="false">
+
+            About
+
+        </button>
+
+    </nav>
+
+    <script src="js/storage.js"></script>
+    <script src="js/notes.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/app.js"></script>
+
 </body>
+
 </html>

@@ -1,23 +1,146 @@
+// =====================================
+// App Starts
+// =====================================
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    const homeButton = document.getElementById("homeButton");
-    const settingsButton = document.getElementById("settingsButton");
-    const aboutButton = document.getElementById("aboutButton");
+    initializeNavigation();
 
-    homeButton.addEventListener("click", () => {
-        showScreen("home");
-    });
+    displayNotes();
 
-    settingsButton.addEventListener("click", () => {
-        showScreen("settings");
-    });
+});
 
-    aboutButton.addEventListener("click", () => {
-        showScreen("about");
-    });
+
+// =====================================
+// Navigation
+// =====================================
+
+function initializeNavigation() {
+
+    document
+        .getElementById("homeButton")
+        .addEventListener("click", () => {
+
+            displayNotes();
+
+            showScreen("home");
+
+        });
+
+
+    document
+        .getElementById("newButton")
+        .addEventListener("click", () => {
+
+            clearEditor();
+
+            openEditor(false);
+
+        });
+
+
+    document
+        .getElementById("settingsButton")
+        .addEventListener("click", () => {
+
+            showScreen("settings");
+
+        });
+
+
+    document
+        .getElementById("aboutButton")
+        .addEventListener("click", () => {
+
+            showScreen("about");
+
+        });
+
+
+    document
+        .getElementById("noteForm")
+        .addEventListener("submit", saveCurrentNote);
+
+}
+
+
+// =====================================
+// Save Note
+// =====================================
+
+function saveCurrentNote(event) {
+
+    event.preventDefault();
+
+    const title = document
+        .getElementById("noteTitle")
+        .value
+        .trim();
+
+    const content = document
+        .getElementById("noteContent")
+        .value
+        .trim();
+
+
+    if (title === "" && content === "") {
+
+        alert("Please enter a title or note.");
+
+        return;
+
+    }
+
+
+    createNote(title, content);
+
+
+    clearEditor();
+
+
+    displayNotes();
+
 
     showScreen("home");
 
-    console.log("DemoApp started.");
+}
 
-});
+
+// =====================================
+// Clear Editor
+// =====================================
+
+function clearEditor() {
+
+    document.getElementById("noteTitle").value = "";
+
+    document.getElementById("noteContent").value = "";
+
+}
+
+
+// =====================================
+// Open Existing Note
+// =====================================
+
+function openNote(id) {
+
+    const notes = loadNotes();
+
+    const note = notes.find(note => note.id === id);
+
+    if (!note) {
+
+        return;
+
+    }
+
+
+    document.getElementById("noteTitle").value = note.title;
+
+    document.getElementById("noteContent").value = note.content;
+
+
+    openEditor(true);
+
+}
