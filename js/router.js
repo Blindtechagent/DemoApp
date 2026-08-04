@@ -1,30 +1,27 @@
 const appContent = document.getElementById("appContent");
 
-const screens = {
-    home: `
-        <h2>Home</h2>
+async function showScreen(screenName) {
 
-        <p>Welcome to DemoApp.</p>
-    `,
+    try {
 
-    settings: `
-        <h2>Settings</h2>
+        const response = await fetch(`assets/views/${screenName}.html`);
 
-        <p>Settings screen coming soon.</p>
-    `,
+        if (!response.ok) {
+            throw new Error("Screen not found.");
+        }
 
-    about: `
-        <h2>About</h2>
+        const html = await response.text();
 
-        <p>This app is built using HTML, CSS, JavaScript and Capacitor.</p>
-    `
-};
+        appContent.innerHTML = html;
 
-function showScreen(screenName){
+    } catch (error) {
 
-    if(!screens[screenName]){
-        return;
+        appContent.innerHTML = `
+            <h2>Error</h2>
+            <p>Unable to load this screen.</p>
+        `;
+
+        console.error(error);
     }
 
-    appContent.innerHTML = screens[screenName];
 }
