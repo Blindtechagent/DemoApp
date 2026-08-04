@@ -1,14 +1,14 @@
 {
   "name": "demoapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "An accessible Android app built with HTML, CSS, JavaScript and Capacitor.",
   "repository": {
     "type": "git",
     "url": "git@github-blindtechagent:Blindtechagent/DemoApp.git"
   },
   "license": "ISC",
-  "author": "",
-  "type": "commonjs",
+  "author": "pawan",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
