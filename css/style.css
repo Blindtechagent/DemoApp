@@ -58,3 +58,7 @@ main{
 .bottom-nav button:hover{
     background:#dddddd;
 }
+
+.hidden{
+    display:none;
+}
